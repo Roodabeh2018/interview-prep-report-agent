@@ -1,0 +1,10 @@
+# Never commit real keys
+.env
+
+# Never commit real CVs; only the slides PDF is allowed
+*.pdf
+!presentation/*.pdf
+
+# System files
+.DS_Store
+Thumbs.db
