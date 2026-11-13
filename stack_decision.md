@@ -28,10 +28,14 @@ LangGraph gives more control over state, loops, and multi-step agent reasoning. 
 
 | Capability | Tool | Purpose |
 |---|---|---|
-| Web search | Tavily | Company background with source links |
+| Web search | Tavily | Company background and similar employers in Germany, with source links |
 | News | GNews | Recent company news with dates and links |
 | Public developer data | GitHub REST API | The candidate's public repositories |
 | Analysis and writing | OpenAI (gpt-4o-mini) | Extract job requirements, match evidence, write the report |
+
+## Why a fixed workflow, not an AI Agent
+
+n8n also offers an AI Agent node that decides by itself which tools to call. This MVP does not use it. The steps of an interview brief are always the same, so letting a model choose them adds cost, run-time variation, and new ways to fail, without making the report better. A fixed sequence is easier to test, and every claim can be checked by code before the user sees it. For an interview brief, being correct matters more than being flexible. An agent becomes useful later for open-ended tasks, such as a practice interview or a self-check loop that rewrites rejected claims.
 
 ## Grounding without a vector database
 
@@ -40,6 +44,7 @@ The MVP does not use Pinecone. Instead, every claim is grounded by deterministic
 - Each job requirement must quote the job posting exactly, or it is dropped.
 - Each experience match must quote the candidate's CV text, or point to one of their real GitHub repositories.
 - Company sources must come from the Tavily results, and news links must come from the GNews results.
+- Similar employers must link to a page from the employer search results, and cannot be the target company.
 - Anything that fails a check is removed and listed in `removed_claims`.
 
 This is a better fit than RAG for the current inputs: the CV and job posting are short enough to send to the model in full, so retrieval could only miss evidence. A vector database becomes useful in a later version, for example to add a library of interview-preparation guides.

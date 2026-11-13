@@ -54,4 +54,13 @@ These sprints come **after** the MVP and are not completed work. All targets are
 | Review of each API's terms | Free plans may restrict commercial use | 1 and 3 |
 | Paid API plans where required | Sprint 3 is commercial use | 3 |
 
+## Product features to test along the way
+
+| Feature | Why users might want it | Sprint |
+|---|---|---|
+| Interview practice with feedback grounded in the CV | Turns a one-time report into a preparation assistant | 1 |
+| Report by email | Easy to find again before the interview | 1 |
+| Similar employers in Germany (already in the MVP) | Helps users find openings that are not advertised; usefulness to be measured | 1 |
+| Shared reports for career advisers | Advisers can review a client's brief before a coaching session | 2 |
+
 Multi-tenant accounts, production authentication, and paid advertising remain out of scope for the MVP.
